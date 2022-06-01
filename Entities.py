@@ -60,10 +60,13 @@ class player(entity):
         super().showstats()
         print("level: "+str(self.level)+" ("+str(self.xp)+" xp)")
     def speattack(self, entity):
-        print(self.name+" use a special attack on "+entity.name)
-        damage = self.strength*2
-        print(entity.name+" just lost "+str(damage)+" hp")
-        entity.hp -= damage
+        if (bernouillirand(0.5 + self.focusing/50)):
+            print(self.name+" use a special attack on "+entity.name)
+            damage = self.strength*2
+            print(entity.name+" just lost "+str(damage)+" hp")
+            entity.hp -= damage
+        else:
+            print("It failed...")
     def run(self, entity):
         print(entity.name+" did not let you run")
 
