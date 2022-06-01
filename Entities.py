@@ -28,7 +28,8 @@ class entity:
     def attack(self, entity):
         print(self.name+" attack "+entity.name)
         r = kuramaswamyrand(2,10)
-        if (r > 0.9):
+        if (r + self.focusing/100 > 1.3):
+            print(r + self.focusing/100)
             damage = int(self.strength * r *2)
             print("Critical hit !")
         else:
