@@ -1,3 +1,5 @@
+from ProbaFunctions import*
+
 import time
 
 from ProbaFunctions import binomialrand
@@ -23,7 +25,7 @@ class entity:
         if(self.hp<=0):
             return True
         return False
-    def attack(self, entity): ###DEAL POISSON LAW DAMAGE + PROBILITY OF DODGING
+    def attack(self, entity):
         print(self.name+" attack "+entity.name)
         damage = self.strength
         if binomialrand(0.9 - self.agility/50):
@@ -45,6 +47,7 @@ class player(entity):
         self.focusing = 5
         self.level = 1
         self.xp = 0
+        self.tired = False
     def showstats(self):
         super().showstats()
         print("level: "+str(self.level)+" ("+str(self.xp)+" xp)")
@@ -99,10 +102,16 @@ class enemy3(entity):
         self.agility = 10
         self.focusing = 50
 
-def spawn_enemy(): ###RANDOM ENNEMY
-    e = enemy1()
+def spawn_enemy():
+    r=uniformrand(3)
+    if r==1:
+        e = enemy1()
+    elif r==2:
+        e = enemy2()
+    elif r==3:
+        e = enemy3()
     print("\nA wild "+e.name+" appeared!")
     time.sleep(1)
     print("Let's fight it!")
-    time.sleep(2)
+    input("\npress Enter to continue...")
     return e
