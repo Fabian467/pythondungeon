@@ -2,7 +2,7 @@ from ProbaFunctions import*
 
 import time
 
-from ProbaFunctions import binomialrand
+from ProbaFunctions import bernouillirand
 
 ## GENERAL ENTITY CLASS
 
@@ -27,10 +27,17 @@ class entity:
         return False
     def attack(self, entity):
         print(self.name+" attack "+entity.name)
-        damage = self.strength
-        if binomialrand(0.9 - self.agility/50):
+        r = kuramaswamyrand(2,10)
+        if (r > 0.9):
+            damage = int(self.strength * r *2)
+            print("Critical hit !")
+        else:
+            damage = self.strength
+        if bernouillirand(0.9 - self.agility/50):
             print(entity.name+" just lost "+str(damage)+" hp")
             entity.hp -= damage
+        else:
+            print ("Dodged !")
 
 
 

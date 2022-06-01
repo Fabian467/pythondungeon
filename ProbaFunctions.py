@@ -34,3 +34,13 @@ def poissonrand(A, k):
     r = random.random()
     r = math.pow(A,k) * math.exp(-A) / math.factorial(k)
     return r*1000
+
+def kuramaswamyrand(A,B):
+    r = random.random()
+    #r = (A*B*(r**A)) * (1-(r**A))**B-1
+    r = 1 - (1-r**A)**B
+    return r
+
+
+
+

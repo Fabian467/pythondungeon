@@ -1,7 +1,6 @@
 from Entities import *
 from FightingSystem import*
 
-import numpy
 import time
 
 def changetiredness(player):
@@ -15,18 +14,18 @@ def changetiredness(player):
 def checktiredness(player, difficulty):
     if player.tired==False:
         if difficulty==1: #easy
-            r = binomialrand(0.05)
+            r = bernouillirand(0.05)
         elif difficulty==2: #normal
-            r = binomialrand(0.1)
+            r = bernouillirand(0.1)
         elif difficulty==3: #hard
-            r = binomialrand(0.3)
+            r = bernouillirand(0.3)
     elif player.tired==True:
         if difficulty==1: #easy
-            r = binomialrand(0.8)
+            r = bernouillirand(0.8)
         elif difficulty==2: #normal
-            r = binomialrand(0.5)
+            r = bernouillirand(0.5)
         elif difficulty==3: #hard
-            r = binomialrand(0.5)
+            r = bernouillirand(0.5)
     if(r==1):
         changetiredness(player)
 
